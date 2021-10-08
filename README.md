@@ -1,1 +1,1 @@
-Nesse directorio contém as atividades e avaliações feitas em sala de Aula com os ensinos do Professor Jackson Machado
+Nesse directorio contém as atividades e avaliações feitas em sala de aula com os ensinos do Professor Jackson Machado
