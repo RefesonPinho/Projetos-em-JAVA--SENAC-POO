@@ -28,8 +28,7 @@ public class Receita {
     }
         
     public void adicionarPadaria(Padaria padaria){
-        this.padaria.add(padaria);
-        
+        this.padaria.add(padaria);   
     }
 }
 
