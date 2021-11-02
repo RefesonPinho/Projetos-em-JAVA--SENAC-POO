@@ -13,5 +13,4 @@ public class Fruta {
         this.nomeCientifico = nomeCientifico;
         this.vitaminas = vitaminas;
     }
-
 }
