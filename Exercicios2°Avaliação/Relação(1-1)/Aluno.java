@@ -39,5 +39,4 @@ public class Aluno {
         this.nascimento = nascimento;
         this.cracha = new Cracha( numero,foto,instituicao,dataInicial,this );
     }
-
 }
