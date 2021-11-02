@@ -34,5 +34,4 @@ public class Geladeira {
     ) {
         this.adicionarFruta(new Fruta(tipo, nomeCientifico, vitaminas));
     }
-
 }
