@@ -30,16 +30,5 @@ public class Casa {
         }
         System.out.println("O total de frutas que tem na geladeira é:");
         System.out.println(geladeira.frutas.size());
-    
-
-        
-        
-
-
-    
-
-
-    
-
     }
 }
