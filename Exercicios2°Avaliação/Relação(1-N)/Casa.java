@@ -9,9 +9,6 @@ public class Casa {
 
         geladeira.adicionarFruta(fruta);
 
-
-
-
         System.out.println("As caracteristicas da geladeira são:");
         System.out.println("Cor\n"
         + geladeira.cor + "\nMarca\n"
