@@ -73,7 +73,7 @@ public class Banco {
         correntistaquatro.setCorrente(correntecinco);
         correntistaquatro.setInvestimento(investimentoito);
 
-        // Adciionando mais contas e investimentos aos Gerentes
+        // Adicionando mais contas e investimentos aos Gerentes
         
         // Gerente 1
         gerenteum.setCorrente(correntetreze);
