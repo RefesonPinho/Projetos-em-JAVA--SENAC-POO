@@ -82,6 +82,37 @@ public class Padaria extends Estabelecimento {
         return total;    
     }
     
+    public static Padaria dadosPadariaum() throws Exception {
+        Padaria padariaum = new Padaria("56","Padaria do Ze","05/08/1995", "Joinville","Petropolis","78141-562","Rua dos Jornalistas", 74, "Das 6 as 20h");
+        padariaum.setReceita(Receita.dadosReceitacinco());
+        padariaum.setReceita(Receita.dadosReceitadez());
+        padariaum.setReceita(Receita.dadosReceitaseis());
+        padariaum.setReceita(Receita.dadosReceitasete());
+        padariaum.setReceita(Receita.dadosReceitaum());
+        return padariaum;
+    }
+
+    public static Padaria dadosPadariadois() throws Exception {
+        Padaria padariadois = new Padaria("21","Padaria do seu Bartolomeu","01/02/1990", "Joinville","Profipo","456741-123","Rua Waldemiro José Borges",798, "Das 6 as 20h");
+        padariadois.setReceita(Receita.dadosReceitaoito());
+        padariadois.setReceita(Receita.dadosReceitanove());
+        padariadois.setReceita(Receita.dadosReceitaquatro());
+        padariadois.setReceita(Receita.dadosReceitatres());
+        padariadois.setReceita(Receita.dadosReceitaum());
+        return padariadois;
+    }
+
+    public static Padaria dadosPadariatres() throws Exception{
+        Padaria padariatres = new Padaria("1","Padaria da Francisca","25/04/2004", "Joinville","Centro","124564-789","Rua XV de Novembro",47, "Das 6 as 20h");
+       padariatres.setReceita(Receita.dadosReceitaoito());
+       padariatres.setReceita(Receita.dadosReceitanove());
+       padariatres.setReceita(Receita.dadosReceitaquatro());
+       padariatres.setReceita(Receita.dadosReceitatres());
+       padariatres.setReceita(Receita.dadosReceitaum());
+        return padariatres;
+    }
+
+    
 }
     
 

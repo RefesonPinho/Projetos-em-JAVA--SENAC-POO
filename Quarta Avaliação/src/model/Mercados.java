@@ -80,4 +80,35 @@ public class Mercados extends Estabelecimento{
             };
         return total;    
     }
+
+
+    public static Mercados dadosMercadosum() throws Exception {
+        Mercados mercadoum = new Mercados("142","Mercado  Silva","03/07/2014", "Joinville","Floresta","223698-74","Rua dos Pardais", 124, "Comproum duas peças de cada item leva uma 0800");
+        mercadoum.setReceita(Receita.dadosReceitaum());
+        mercadoum.setReceita(Receita.dadosReceitadois());
+        mercadoum.setReceita(Receita.dadosReceitadez());
+        mercadoum.setReceita(Receita.dadosReceitasete());
+        mercadoum.setReceita(Receita.dadosReceitatres());
+        return mercadoum;
+    }
+
+    public static Mercados dadosMercadosdois() throws Exception {
+        Mercados mercadodois = new Mercados("748","Mercado da Mônica","25/04/2010", "Joinville","Costa e Silva","147896-14","Rua das Flores", 478, "Dia dos salgados e doces por metade do preço");
+        mercadodois.setReceita(Receita.dadosReceitaum());
+        mercadodois.setReceita(Receita.dadosReceitaoito());
+        mercadodois.setReceita(Receita.dadosReceitanove());
+        mercadodois.setReceita(Receita.dadosReceitaquatro());
+        mercadodois.setReceita(Receita.dadosReceitaseis());
+        return mercadodois;
+    }
+
+    public static Mercados dadosMercadostres() throws Exception{
+        Mercados mercadotres = new Mercados("142","Mercado do Povo","03/07/2014", "Joinville","Centro","223698-74","Rua das Pedras", 791, "A cada dez peças compradas leva 5");
+        mercadotres.setReceita(Receita.dadosReceitaum());
+        mercadotres.setReceita(Receita.dadosReceitaoito());
+        mercadotres.setReceita(Receita.dadosReceitanove());
+        mercadotres.setReceita(Receita.dadosReceitaquatro());
+        mercadotres.setReceita(Receita.dadosReceitaseis());
+        return mercadotres;
+    }
 }

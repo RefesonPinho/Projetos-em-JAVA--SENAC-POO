@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Estabelecimento{
 
     // Encapsulando os atributos
-    private String idAlvara;
+    protected String idAlvara;
     private String nomeEstabelecimento;
     private String datadeabertura;
     private Endereco endereco;

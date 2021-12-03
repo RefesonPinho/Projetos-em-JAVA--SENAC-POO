@@ -1,0 +1,49 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Cidade",
+            "request": "launch",
+            "mainClass": "Cidade",
+            "projectName": "DatabaseConection_84d29600"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainPadaria",
+            "request": "launch",
+            "mainClass": "MainPadaria",
+            "projectName": "DatabaseConection_84d29600"
+        },
+        {
+            "type": "java",
+            "name": "Launch BancoDadosPadaria",
+            "request": "launch",
+            "mainClass": "BancoDadosPadaria",
+            "projectName": "a_db623f2a"
+        },
+        {
+            "type": "java",
+            "name": "Launch BancoDadosPadaria",
+            "request": "launch",
+            "mainClass": "BancoDadosPadaria",
+            "projectName": "Quarta Avaliação_1b6d522b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch BancoDadosPadaria",
+            "request": "launch",
+            "mainClass": "BancoDadosPadaria",
+            "projectName": "DatabaseConection_84d29600"
+        }
+    ]
+}
