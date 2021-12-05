@@ -1,1 +1,1 @@
-Nesse repositório consta a quarta avaliação em sala tendo como base as avaliações dois e três e nessa avaliação criamos um projeto de CRUD  .
+Nesse repositório consta a quarta avaliação em sala tendo como base as avaliações dois e três onde nessa avaliação criamos um projeto de CRUD e aprendemos como acessar um banco de dados para fazermos consultas,alterações,atualizações e exclusões.
