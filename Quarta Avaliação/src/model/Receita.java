@@ -1,14 +1,11 @@
+// Importando as bibliotecas padrões e as packages.
 package model;
-
-// Importandos bibliotecas padrões.
 import java.util.ArrayList;
 import java.util.Objects;
 
 // Criando a classe Receita e seus atributos
 public class Receita {
-    
     // Encapsulando os atributos e criando collections com ArrayLists através do relacionamento de classes
-    
     private String idReceita;
     private String nomeReceita;
     private String etapas;
@@ -19,9 +16,7 @@ public class Receita {
     private ArrayList <Cliente> clientes = new ArrayList<>();
     private ArrayList <Mercados> supermercados = new ArrayList<>();
     
-    
     // Criando o construtor da classe Receita
-   
     public Receita(
         String idReceita,
         String nomeReceita,

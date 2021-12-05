@@ -1,9 +1,13 @@
+// Importandos bibliotecas padrões.
 import java.util.Scanner;
 
+
+// Criando o programa principal do sistema.
 public class ProgramaInicialDois {
 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
+        //Criando os menus de escolha do Crud do Funcionario  .
         int menu = 0;
         do {
             System.out.println("Digite a opção desejada: ");
@@ -20,6 +24,7 @@ public class ProgramaInicialDois {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            //Chamando os metodos da escolha do menu apartir do cases da chave Switch menu. 
             switch (menu) {
                 case 1:
                     try {

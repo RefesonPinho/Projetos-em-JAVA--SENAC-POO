@@ -1,5 +1,5 @@
+// Importando as bibliotecas padrões e as packages.
 package model;
-// Importandos bibliotecas padrões.
 import java.util.ArrayList;
 import java.util.Objects;
 

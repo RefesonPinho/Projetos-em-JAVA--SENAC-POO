@@ -1,13 +1,14 @@
 
-
+// Criando a classe Funcionario.
 public class Funcionario {
-    
+    /// Encapsulando os atributos.
     private int id;
     private String nome;
     private String cpf;
     private String dataNascimento;
     private String matricula;
 
+    // Criando o construtor da classe Funcionario.
     public Funcionario(int id, String nome, String cpf, String dataNascimento, String matricula) {
         this.id = id;
         this.nome = nome;
@@ -15,7 +16,8 @@ public class Funcionario {
         this.dataNascimento = dataNascimento;
         this.matricula = matricula;
     }
-
+    
+    // Criando o construtor da classe Funcionario com outra assinatura.
     public Funcionario(String nome, String cpf, String dataNascimento, String matricula) {
         this.nome = nome;
         this.cpf = cpf;
@@ -23,6 +25,7 @@ public class Funcionario {
         this.matricula = matricula;
     }
 
+    // Criando os métodos setters e getters para poder ter acesso controlado aos atributos encapsulados.
     public int getId() {
         return this.id;
     }
@@ -88,6 +91,7 @@ public class Funcionario {
         return this;
     }
 
+    // Fazendo uso do padrão de projeto Decorator 
     @Override
     public boolean equals(Object o) {
         if (o == this)

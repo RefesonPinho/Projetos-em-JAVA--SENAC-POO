@@ -1,11 +1,9 @@
+// Importando as bibliotecas padrões e as packages.
 package model;
-
-// Importandos biblioteca padrão.
 import java.util.Objects;
 
 //Criando a classe Pai Estabelecimento
 public class Estabelecimento{
-
     // Encapsulando os atributos
     protected String idAlvara;
     private String nomeEstabelecimento;

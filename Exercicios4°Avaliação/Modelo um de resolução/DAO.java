@@ -1,3 +1,4 @@
+// Importandos bibliotecas padrões.
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -5,9 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+// Criando a classe DAO.
 public class DAO {
     private Connection connection;
-
+    // Criando as regras de negocio do CRUD e da conexão ao banco de dados.
     public int insert(String sql, Object[] atribs) throws Exception {
         try{
             PreparedStatement statement = this.startConnection().prepareStatement(

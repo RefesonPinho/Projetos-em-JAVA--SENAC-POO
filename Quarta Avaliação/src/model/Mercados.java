@@ -1,12 +1,10 @@
+// Importando as bibliotecas padrões e as packages.
 package model;
-
-// Importandos bibliotecas padrões.
 import java.util.ArrayList;
 import java.util.Objects;
 
 // Criando a classe Mercados a partir da herança da classe Pai que é a classe Estabelecimento.
 public class Mercados extends Estabelecimento{
-    
     /// Encapsulando os atributos e criando collection com ArrayList através do relacionamento de classes.
     private String promocao;
     private ArrayList <Receita> pratos = new ArrayList<>();

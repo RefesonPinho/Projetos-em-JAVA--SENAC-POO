@@ -1,3 +1,4 @@
+// Importandos bibliotecas padrões.
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -7,19 +8,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
-
+// Criando a classe Funcionario.
 public class Funcionario {
-    
+    /// Encapsulando os atributos.
     private int id;
     private String nome;
     private String cpf;
     private String dataNascimento;
     private String matricula;
-
+    /// Dados de acesso ao banco de dados.
     private final static String url = "jdbc:mysql://localhost:3306/company";
     private final static String user = "root";
     private final static String password = "";
 
+    // Criando o construtor da classe Funcionario.
     public Funcionario(int id, String nome, String cpf, String dataNascimento, String matricula) {
         this.id = id;
         this.nome = nome;
@@ -27,14 +29,15 @@ public class Funcionario {
         this.dataNascimento = dataNascimento;
         this.matricula = matricula;
     }
-
+    // Criando o construtor da classe Funcionario com outra assinatura.
     public Funcionario(String nome, String cpf, String dataNascimento, String matricula) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.matricula = matricula;
-    }
+    }   
 
+    // Criando os métodos setters e getters para poder ter acesso controlado aos atributos encapsulados.
     public int getId() {
         return this.id;
     }
@@ -100,6 +103,7 @@ public class Funcionario {
         return this;
     }
 
+    // Fazendo uso do padrão de projeto Decorator 
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -127,6 +131,7 @@ public class Funcionario {
             "}";
     }
 
+    //Criando os métodos do Crud do Funcionario no banco de dados
     public static void printFuncionario(
         ArrayList<Funcionario> funcionarios
     ) {
@@ -379,5 +384,4 @@ public class Funcionario {
             System.out.println(e.getMessage());
         }
     }
-
 }

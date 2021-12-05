@@ -1,5 +1,5 @@
+// Importando as bibliotecas padrões e as packages.
 package model;
-
 import java.util.Objects;
 
 // Criando a classe Endereço

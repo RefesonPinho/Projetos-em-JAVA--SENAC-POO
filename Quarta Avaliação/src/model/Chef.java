@@ -1,25 +1,21 @@
+// Importandos bibliotecas padrões.
 package model;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-// Importandos bibliotecas padrões.
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 // Criando a classe Chef a partir da herança da classe Pai que é a classe Pessoass.
 public class Chef extends Pessoass {
-    
     /// Encapsulando os atributos e criando collection com ArrayList através do relacionamento de classes.
     private int idChef;
     private String especialidade;
     private ArrayList<Receita> receitas = new  ArrayList <>();
     
-    
-
     // Criando o construtor da classe Chef.
     public Chef(
         String nome,

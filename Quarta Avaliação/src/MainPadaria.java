@@ -1,11 +1,12 @@
+// Importando as bibliotecas padrões e os modelos.
 import java.util.Scanner;
-
 import model.Chef;
 import model.Cliente;
 import model.Mercados;
 import model.Padaria;
 import model.Receita;
 
+// Criando o programa principal do sistema.
 public class MainPadaria {
 
     public static void main(String[] args) throws Exception {

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+// Criando o programa principal do sistema.
 public class ProgramaInicial {
 
     public static void main(String[] args) throws Exception {
