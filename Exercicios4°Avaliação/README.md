@@ -1,1 +1,3 @@
-Nesse diretório contém as atividades e avaliações feitas em sala de aula com os ensinos do Professor Jackson Machado na linguagem Java.
+Nesse diretório contém os exercícios que nos preparou para a quarta avaliação feitas em sala de aula com os ensinos do Professor Jackson Machado na linguagem Java. 
+Nesse exercício podemos aprender como acessar um banco de dados fazendo uso dos drivers de acesso no qual usamos o JDBC para o mysql e criamos um CRUD. Criamos um banco de dados específico e apartir dele cadastramos,visualizamos,atualizamos e excluimos dados contido nesse banco de dados.
+E ainda fizemos dois modelos de resolução um que o Crud e a conexão ao banco de dados é feito diretamente no programa principal(main) e outro é feito na propria classe do Objeto onde criamos métodos e esses metodos são chamados no programa principal.
