@@ -81,7 +81,7 @@ public class Mercados extends Estabelecimento{
         return total;    
     }
 
-
+      //Criando os métodos dos Mercados e instanciando os mesmos
     public static Mercados dadosMercadosum() throws Exception {
         Mercados mercadoum = new Mercados("142","Mercado  Silva","03/07/2014", "Joinville","Floresta","223698-74","Rua dos Pardais", 124, "Comproum duas peças de cada item leva uma 0800");
         mercadoum.setReceita(Receita.dadosReceitaum());

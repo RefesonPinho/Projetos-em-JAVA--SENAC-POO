@@ -121,6 +121,7 @@ public class Cliente extends Pessoass {
         return total;    
     }
 
+    //Criando os métodos do Crud do Cliente no banco de dados
     public static void printCliente(
         ArrayList<Cliente> clientes
     ) {
@@ -306,56 +307,5 @@ public class Cliente extends Pessoass {
             System.out.println(e.getMessage());
         }
     }
-
-    public static Receita dadosReceitaum() throws Exception {
-        Receita receitaum =new Receita("21","Pão de Mel","preparar a massa e assar",2,"R$ 5,00",Chef.getChefPS().get(0));
-        receitaum.getCliente().get(0);
-        return dadosReceitaum();
-    }
-
-    public static Receita dadosReceitadois() throws Exception {
-        Receita receitadois = new Receita("87","Bolo de chocolate","Separar os ingredientes,prepara-los e fazer o bolo",3,"RS 2", Chef.getChefPS().get(1));
-        Cliente.getclienteS().get(1).setReceita(dadosReceitaum());
-        return receitadois;
-    }
-
-    public static Receita dadosReceitatres() throws Exception{
-        Receita receitatres = new Receita("65","Pão Francês","preparar a massa e assar",2," R$ 6,50 Kg",Chef.getChefPS().get(2));
-        return receitatres;
-    }
-
-    public static Receita dadosReceitaquatro() throws Exception {
-        Receita receitaquatro =  new Receita("32","Torta de Coco com chocolate","Separar os ingredientes,prepara-los e fazer a torta",3," R$ 15",Chef.getChefPS().get(0));
-        return receitaquatro;
-    }
-
-    public static Receita dadosReceitacinco() throws Exception {
-        Receita receitacinco = new Receita("41","Chineque convencional","preparar a massa e assar",2,"R$ 2",Chef.getChefPS().get(1));
-        return  receitacinco;
-    }
-
-    public static Receita dadosReceitaseis() throws Exception{
-        Receita receitaseis = new Receita("04","Orelha de gato","Separar todos os ingredientes,preparar a massa e assar",3," R$ 3",Chef.getChefPS().get(2));
-        return receitaseis;
-    }
-    
-    public static Receita dadosReceitasete() throws Exception {
-        Receita receitasete = new Receita("45","Torta de Limão","Separar os ingredientes,prepara-los e fazer o bolo",3,"R$ 12",Chef.getChefPS().get(0));
-        return receitasete;
-    }
-
-    public static Receita dadosReceitaoito() throws Exception {
-        Receita receitaoito = new Receita("5","Coxinha de frango","Separar os ingredientes,prepara-los e fazer a coxinha",3,"R$ 3",Chef.getChefPS().get(1));
-        return receitaoito;
-    }
-
-    public static Receita dadosReceitanove() throws Exception{
-        Receita receitanove = new Receita("8","Bananada","Separar os ingredientes,prepara-los, assar a massa e jogar açucar em cima da massa pronta",4,"R$ 3",Chef.getChefPS().get(2));
-        return receitanove;
-    }
-
-    public static Receita dadosReceitadez() throws Exception{
-        Receita receitadez =new Receita("43","Coxinha de carne","Separar os ingredientes,prepara-los e fazer a coxinha",3," R$ 3",Chef.getChefPS().get(0));
-        return receitadez;
-    }
 }
+   

@@ -11,6 +11,7 @@ public class MainPadaria {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         int menu = 0;
+        //Criando os menus de escolha do Crud do Cliente e do chef e informações das padarias, mercados e receitas
         do {
             System.out.println("Sistema de cadastro geral e acesso da Padaria: ");
             System.out.println("\n");
@@ -52,6 +53,7 @@ public class MainPadaria {
                 menu = scanner.nextInt();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+            //Chamando os metodos da escolha do menu apartir do cases da chave Switch menu.    
             }
             switch (menu) {
                 case 1:

@@ -157,7 +157,7 @@ public class Receita {
         + getValor();
     }
 
-
+    // Criando métodos das receitas e instanciando as mesmas
     public static Receita dadosReceitaum() throws Exception {
         Receita receitaum =new Receita("21","Pão de Mel","preparar a massa e assar",2,"R$ 5,00",Chef.getChefPS().get(0));
         return receitaum;

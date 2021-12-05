@@ -81,7 +81,8 @@ public class Padaria extends Estabelecimento {
             };
         return total;    
     }
-    
+
+    //Criando os métodos das Padarias e instanciando as mesmas
     public static Padaria dadosPadariaum() throws Exception {
         Padaria padariaum = new Padaria("56","Padaria do Ze","05/08/1995", "Joinville","Petropolis","78141-562","Rua dos Jornalistas", 74, "Das 6 as 20h");
         padariaum.setReceita(Receita.dadosReceitacinco());
