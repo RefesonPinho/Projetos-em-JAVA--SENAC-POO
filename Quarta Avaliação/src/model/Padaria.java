@@ -112,8 +112,6 @@ public class Padaria extends Estabelecimento {
        padariatres.setReceita(Receita.dadosReceitaum());
         return padariatres;
     }
-
-    
 }
     
 
