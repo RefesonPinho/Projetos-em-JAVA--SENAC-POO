@@ -1,4 +1,4 @@
-// Importandos bibliotecas padrões.
+// Importando as bibliotecas padrões e as packages.
 package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
