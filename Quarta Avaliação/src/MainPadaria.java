@@ -48,8 +48,6 @@ public class MainPadaria {
             System.out.println("22.Dados do oitava Receita");
             System.out.println("23.Dados da nona Receita");
             System.out.println("24.Dados da decima Receita");
-            
-
             try{
                 menu = scanner.nextInt();
             } catch (Exception e) {
