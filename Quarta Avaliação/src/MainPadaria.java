@@ -41,11 +41,11 @@ public class MainPadaria {
             System.out.println("15.Dados da primeira Receita");
             System.out.println("16.Dados da segunda Receita");
             System.out.println("17.Dados da terceira Receita");
-            System.out.println("18.Dados do quarta Receita");
-            System.out.println("19.Dados do quinta Receita");
-            System.out.println("20.Dados do sexta Receita");
-            System.out.println("21.Dados do setima Receita");
-            System.out.println("22.Dados do oitava Receita");
+            System.out.println("18.Dados da quarta Receita");
+            System.out.println("19.Dados da quinta Receita");
+            System.out.println("20.Dados da sexta Receita");
+            System.out.println("21.Dados da setima Receita");
+            System.out.println("22.Dados da oitava Receita");
             System.out.println("23.Dados da nona Receita");
             System.out.println("24.Dados da decima Receita");
             try{
