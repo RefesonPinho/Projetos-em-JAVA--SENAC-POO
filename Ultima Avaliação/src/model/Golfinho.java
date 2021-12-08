@@ -5,17 +5,19 @@ import java.util.Objects;
 public class Golfinho extends Animal {
     private int treinamento;
     private Jaula jaula;
+    Treinamento treinamentoo;
 
-    public Golfinho(int id, String nome,int treinamento, int jaula_id, String descricao) {
+    public Golfinho(int id, String nome,int treinamento, int jaulaId) {
         super(id, nome);
         this.setTreinamento(treinamento);
-        this.jaula = new Jaula(jaula_id, descricao);
+        this.getJaula().setIdJaula(jaulaId);
+        
     }
 
-    public Golfinho(String nome,int treinamento, int jaula_id, String descricao) {
-        super(0, nome);
+    public Golfinho(String nome,int treinamento, int jaulaId) {
+        super(nome);
         this.setTreinamento(treinamento);
-        this.jaula = new Jaula(jaula_id, descricao);
+        this.getJaula().setIdJaula(jaulaId); 
     }
 
 

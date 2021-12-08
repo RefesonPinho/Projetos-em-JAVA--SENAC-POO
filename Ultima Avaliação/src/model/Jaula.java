@@ -3,11 +3,11 @@ package model;
 import java.util.Objects;
 
 public class Jaula {
-    private int jaula_id;
+    private int jaulaId;
     private String descricao;
 
-    public Jaula(int jaula_id, String descricao) {
-        this.jaula_id = jaula_id;
+    public Jaula(int jaulaId, String descricao) {
+        this.jaulaId = jaulaId;
         this.descricao = descricao;
     }
 
@@ -20,11 +20,11 @@ public class Jaula {
     }
 
     public int getIdJaula() {
-        return jaula_id;
+        return jaulaId;
     }
 
-    public void setIdJaula(int jaula_id) {
-        this.jaula_id = jaula_id;
+    public void setIdJaula(int jaulaId) {
+        this.jaulaId = jaulaId;
     }
 
     // Fazendo uso do padrão de projeto Decorator 

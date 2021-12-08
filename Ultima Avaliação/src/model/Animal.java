@@ -14,6 +14,12 @@ public class Animal {
         this.nome = nome;
     }
 
+    protected Animal(
+        String nome
+    ){
+        this.nome = nome;
+    }
+
     public void setIdAnimal(int id){
         this.id = id;
     }

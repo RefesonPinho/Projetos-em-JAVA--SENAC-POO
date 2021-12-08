@@ -13,9 +13,6 @@ import model.Leao;
 
 public class LeaoDAO {
     private Connection connection;
-    private final static String url = "jdbc:mysql://localhost:3306/company";
-    private final static String user = "root";
-    private final static String password = "";
 
     public int insert(String sql, Object[] atribs) throws Exception {
         try{
@@ -105,7 +102,7 @@ public class LeaoDAO {
     public static ArrayList<Leao> getclienteS() throws Exception {
         try {
             System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/padaria?useTimezone=true&serverTimezone=UTC", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
             System.out.println("Mostrando dados presente no banco de dados");
@@ -118,7 +115,7 @@ public class LeaoDAO {
                         rs.getString("nome"),
                         rs.getInt("alimentacao"),
                         rs.getInt("visitantes"),
-                        rs.getInt("jaula_id"),null
+                        rs.getInt("jaula_id")
                     )
                 );
             }
@@ -132,25 +129,25 @@ public class LeaoDAO {
     public static Leao getLeaoInsert(Scanner scanner) {
         System.out.println("Informe o nome do Leao");
         String nome = scanner.next();
-        System.out.println("Informe o CPF do Leao");
+        System.out.println("Informe o intervalo de alimentação do Leao");
         int alimentacao = scanner.nextInt();
-        System.out.println("Informe a Data de Nascimento do Leao");
+        System.out.println("Informe a quantiadade de visitantes do Leão");
         int visitantes = scanner.nextInt();
-        System.out.println("Informe o telefone do Leao");
-        int jaulaid = scanner.nextInt();
+        System.out.println("Informe o número da Jaula do Leão ");
+        int jaulaId = scanner.nextInt();
 
         return new Leao(
             nome,
             alimentacao,
             visitantes,
-            jaulaid,null
+            jaulaId
         );
     }
 
     public static void insertLeaoPS(Leao leao) {
         try{
             System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/padaria?useTimezone=true&serverTimezone=UTC", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             System.out.println("Banco de Dados conectado");
             System.out.println("Inserindo dados no banco de dados");
             PreparedStatement stm = con.prepareStatement("INSERT INTO leao "
@@ -171,7 +168,7 @@ public class LeaoDAO {
                         queryRs.getString("nome"),
                         queryRs.getInt("alimentacao"),
                         queryRs.getInt("vitaminas"),
-                        queryRs.getInt("jaula_id"),null
+                        queryRs.getInt("jaula_id")
                     ));
                     System.out.println("Dados inseridos com sucesso"); 
                 }
@@ -184,45 +181,43 @@ public class LeaoDAO {
 
     public static Leao getLeaoUpdate(Scanner scanner) throws Exception {
         try {
-            Leao leao = Leao.getLeao(scanner);
-            System.out.println("Informe o nome do funcionário (Deixar vazio para manter)");
+            Leao leao = getLeao(scanner);
+            System.out.println("Informe o nome do Leão (Deixar vazio para manter)");
             String nome = scanner.next();
-            if (nome.length() > 0){
-                leao.setNome(nome);
+            leao.setNome(nome);
+            System.out.println("Informe o intervalo de alimentação do Leão (Deixar vazio para manter)");
+            int alimentacao = scanner.nextInt();
+            if (alimentacao > 0){
+                leao.setAlimentacao(alimentacao);
             }
-            System.out.println("Informe o CPF do funcionário (Deixar vazio para manter)");
-            String cpf = scanner.next();
-            if (cpf.length() > 0){
-                leao.setCPF(cpf);
+            System.out.println("Informe a quantiadade de visitantes do Leão (Deixar vazio para manter)");
+            int visitantes = scanner.nextInt();
+            if (visitantes  > 0){
+                leao.setVisitantes(visitantes);
             }
-            System.out.println("Informe a Data de Nascimento do funcionário (Deixar vazio para manter)");
-            String dataNascimento = scanner.next();
-            if (dataNascimento.length() > 0){
-                leao.setDataNascimento(dataNascimento);
+            System.out.println("Informe o número da Jaula do Leão (Deixar vazio para manter)");
+            int jaulaId = scanner.nextInt();
+            if (jaulaId > 0){
+                leao.getJaula().getIdJaula();
             }
-            System.out.println("Informe o Matricula do funcionário (Deixar vazio para manter)");
-            String telefone = scanner.next();
-            if (telefone.length() > 0){
-                leao.setTelefone(telefone);
-            }
-            return cliente;
+            return leao;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
-    public static void updateClienteS(Cliente cliente) {
+    public static void updateLeaoS(Leao leao) {
         try {
             System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/padaria?useTimezone=true&serverTimezone=UTC", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
-            stm.execute("UPDATE cliente SET "
-                + " nome = '" + cliente.getNome() + "'"
-                + ", cpf = '" + cliente.getCPF() + "'"
-                + ", dataNascimento = '" + cliente.getDataNascimento() + "'"
-                + ", telefone = '" + cliente.getTelefone() + "'"
-                + " WHERE idCliente = " + cliente.getidCliente());
+            stm.execute("UPDATE Leao SET "
+                + " WHERE id = " + leao.getIdAnimal()
+                + " nome = '" + leao.getNome() + "'"
+                + ", alimentacao = '" + leao.getAlimentacao() + "'"
+                + ", visitantes = '" + leao.getVisitantes() + "'"
+                + ", jaula_id = '" + leao.getJaula().getIdJaula());
                 System.out.println("Dados atualizados com sucesso"); 
             con.close();
         } catch (Exception e) {
@@ -230,27 +225,27 @@ public class LeaoDAO {
         }
     }
 
-    public static Cliente getCLiente(Scanner scanner) throws Exception { 
+    public static Leao getLeao(Scanner scanner) throws Exception { 
         try {
-            System.out.println("Informe o ID do Cliente: ");
+            System.out.println("Informe o ID do leao: ");
             int id = scanner.nextInt();
             System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/padaria?useTimezone=true&serverTimezone=UTC", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
 
-            ResultSet rs = stm.executeQuery("SELECT * FROM cliente WHERE idCliente = " + id);
+            ResultSet rs = stm.executeQuery("SELECT * FROM leao WHERE id = " + id);
             
             if(!rs.next()) {
                 throw new Exception("Id inválido");
             }
             
-            return new Cliente(
+            return new Leao(
+                rs.getInt("id"),
                 rs.getString("nome"),
-                rs.getString("cpf"),
-                rs.getString("dataNascimento"),
-                rs.getInt("idCliente"),
-                rs.getString("telefone")
+                rs.getInt("alimentacao"),
+                rs.getInt("visitantes"),
+                rs.getInt("jaula_id")
             );
             
         } catch (Exception e) {
@@ -258,14 +253,14 @@ public class LeaoDAO {
         }
     }
 
-    public static void deleteClientePS(Cliente cliente) {
+    public static void deleteLeaoPS(Leao leao) {
         try {
             System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/padaria?useTimezone=true&serverTimezone=UTC", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             System.out.println("Banco de Dados conectado");
             System.out.println("Deletando Dados do banco");
-            PreparedStatement pStm = con.prepareStatement("DELETE FROM cliente WHERE idCliente = ?");
-            pStm.setInt(1, cliente.getidCliente());
+            PreparedStatement pStm = con.prepareStatement("DELETE FROM leao WHERE id = ?");
+            pStm.setInt(1, leao.getIdAnimal());
             System.out.println("Dados deletado com sucesso");  
             if(pStm.executeUpdate() <= 0) {
                 System.out.println("Falha na execução.");
@@ -276,5 +271,7 @@ public class LeaoDAO {
         }
     }
 
-    
+    public static void printLeao(Leao leao) {
+        System.out.println(leao);
+    }
 }

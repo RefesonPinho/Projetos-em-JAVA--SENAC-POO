@@ -7,20 +7,19 @@ public class Leao extends Animal {
     private int visitantes = 0;
     private Jaula jaula;
 
-    public Leao(int id,String nome,int alimentacao, int visitantes, int jaula_id, String descricao) {
+    
+    public Leao(int id, String nome, int alimentacao, int visitantes, int jaulaId) {
         super(id, nome);
-        this.alimentacao= alimentacao;
+        this.alimentacao = alimentacao;
         this.visitantes = visitantes;
-        this.jaula = new Jaula(jaula_id, descricao);
+        this.getJaula().setIdJaula(jaulaId);
     }
 
-    public Leao(String nome,int alimentacao, int visitantes, int jaula_id, String descricao) {
-        super(0, nome);
-        this.alimentacao= alimentacao;
-        this.visitantes = visitantes;
-        this.jaula = new Jaula(jaula_id, descricao);
-    }    
-
+    public Leao(String nome, int alimentacao, int visitantes, int jaulaId){
+        super(nome);
+        this.getJaula().setIdJaula(jaulaId);
+    }
+    
     public int getVisitantes() {
         return visitantes;
     }
