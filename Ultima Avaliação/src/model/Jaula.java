@@ -1,4 +1,4 @@
-package model;
+package src.model;
 
 import java.util.Objects;
 
@@ -11,6 +11,14 @@ public class Jaula {
         this.descricao = descricao;
     }
 
+    public Jaula(int jaulaId) {
+        this.jaulaId = jaulaId;
+    }
+
+    public Jaula(String descricao) {
+        this.descricao = descricao;
+    }
+    
     public String getDescricao() {
         return descricao;
     }

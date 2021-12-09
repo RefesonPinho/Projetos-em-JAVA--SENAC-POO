@@ -1,8 +1,9 @@
+package src;
 // Importando as bibliotecas padrões e os modelos.
 import java.util.Scanner;
 
-import dao.GolfinhoDAO;
-import dao.LeaoDAO;
+import src.dao.GolfinhoDAO;
+import src.dao.LeaoDAO;
 
 
 
@@ -85,7 +86,7 @@ public class MainZoologico {
                 case 6:
                     try {
                         GolfinhoDAO.insertGolfinhoS(
-                            GolfinhoDAO.getGolfinhoPS(scanner)
+                            GolfinhoDAO.getGolfinhoInsert(scanner)
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());

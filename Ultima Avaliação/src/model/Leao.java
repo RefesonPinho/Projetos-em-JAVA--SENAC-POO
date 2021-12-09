@@ -1,4 +1,4 @@
-package model;
+package src.model;
 
 import java.util.Objects;
 
@@ -8,16 +8,16 @@ public class Leao extends Animal {
     private Jaula jaula;
 
     
-    public Leao(int id, String nome, int alimentacao, int visitantes, int jaulaId) {
-        super(id, nome);
+    public Leao(String nome, int alimentacao, int visitantes, int jaulaId, String descricao) {
+        super(nome);
         this.alimentacao = alimentacao;
         this.visitantes = visitantes;
-        this.getJaula().setIdJaula(jaulaId);
+        this.jaula = new Jaula(jaulaId, descricao);
     }
 
-    public Leao(String nome, int alimentacao, int visitantes, int jaulaId){
+    public Leao(String nome, int alimentacao, int visitantes, String descricao){
         super(nome);
-        this.getJaula().setIdJaula(jaulaId);
+        
     }
     
     public int getVisitantes() {

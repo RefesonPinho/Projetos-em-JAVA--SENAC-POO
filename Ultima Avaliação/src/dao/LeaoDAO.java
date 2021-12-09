@@ -1,4 +1,4 @@
-package dao;
+package src.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.Leao;
+import src.model.Leao;
 
 public class LeaoDAO {
     private Connection connection;
@@ -111,11 +111,11 @@ public class LeaoDAO {
             while (rs.next()) {
                 leaos.add(
                     new Leao(
-                        rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getInt("alimentacao"),
                         rs.getInt("visitantes"),
-                        rs.getInt("jaula_id")
+                        rs.getInt("jaula_id"),
+                        rs.getString("descricao")
                     )
                 );
             }
@@ -133,14 +133,14 @@ public class LeaoDAO {
         int alimentacao = scanner.nextInt();
         System.out.println("Informe a quantiadade de visitantes do Leão");
         int visitantes = scanner.nextInt();
-        System.out.println("Informe o número da Jaula do Leão ");
-        int jaulaId = scanner.nextInt();
+        System.out.println("Informe a descrição do Leão ");
+        String descricao = scanner.next();
 
         return new Leao(
             nome,
             alimentacao,
             visitantes,
-            jaulaId
+            descricao
         );
     }
 
@@ -151,24 +151,24 @@ public class LeaoDAO {
             System.out.println("Banco de Dados conectado");
             System.out.println("Inserindo dados no banco de dados");
             PreparedStatement stm = con.prepareStatement("INSERT INTO leao "
-                            + "(nome, cpf, dataNascimento, telefone) VALUES "
+                            + "(nome, alimentacao, visitantes, descricao) VALUES "
                             + "(?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             stm.setString(1, leao.getNome());
             stm.setInt(2, leao.getAlimentacao());
             stm.setInt(3, leao.getVisitantes());
-            stm.setInt(4, leao.getJaula().getIdJaula());
+            stm.setString(4, leao.getJaula().getDescricao());
             if (stm.executeUpdate() > 0) {
                 ResultSet rs = stm.getGeneratedKeys();
 
                 if (rs.next()) {
-                    ResultSet queryRs = stm.executeQuery("SELECT * FROM cliente WHERE id = " + rs.getInt(1));
+                    ResultSet queryRs = stm.executeQuery("SELECT * FROM leao WHERE id = " + rs.getInt(1));
                     queryRs.next();
                     System.out.println(new Leao(
-                        queryRs.getInt("id"),
-                        queryRs.getString("nome"),
-                        queryRs.getInt("alimentacao"),
-                        queryRs.getInt("vitaminas"),
-                        queryRs.getInt("jaula_id")
+                        rs.getString("nome"),
+                        rs.getInt("alimentacao"),
+                        rs.getInt("visitantes"),
+                        rs.getInt("jaula_id"),
+                        rs.getString("descricao")
                     ));
                     System.out.println("Dados inseridos com sucesso"); 
                 }
@@ -241,11 +241,12 @@ public class LeaoDAO {
             }
             
             return new Leao(
-                rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getInt("alimentacao"),
                 rs.getInt("visitantes"),
-                rs.getInt("jaula_id")
+                rs.getInt("jaula_id"),
+                rs.getString("descricao")
+
             );
             
         } catch (Exception e) {
@@ -271,7 +272,5 @@ public class LeaoDAO {
         }
     }
 
-    public static void printLeao(Leao leao) {
-        System.out.println(leao);
-    }
+    
 }

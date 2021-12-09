@@ -1,4 +1,4 @@
-package dao;
+package src.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.Golfinho;
+import src.model.Golfinho;
 
 public class GolfinhoDAO {
     private Connection connection;
@@ -114,7 +114,10 @@ public class GolfinhoDAO {
                        rs.getInt("id"),
                        rs.getString("nome"),
                        rs.getInt("treinamento"),
-                       rs.getInt("jaula_id")
+                       rs.getInt("jaula_id"),
+                       rs.getString("descricao"),
+                       rs.getDate("data"),
+                       rs.getString("detalhes")
                     )
                 );
             }
@@ -133,11 +136,11 @@ public class GolfinhoDAO {
         System.out.println("Informe o numero de treinamentos do Golfinho");
         int treinamento = scanner.nextInt();
         System.out.println("Informe o número da Jaula do Golfinho");
-        int jaulaId = scanner.nextInt();
+        int descricao = scanner.nextInt();
         return new Golfinho(
             nome,
             treinamento,
-            jaulaId
+            descricao
         );
     }
 
@@ -149,7 +152,7 @@ public class GolfinhoDAO {
             System.out.println("Banco de Dados conectado");
             System.out.println("Inserindo dados no banco de dados");
             boolean sql = stm.execute("INSERT INTO golfinho "
-                + "(nome, treinamento, jaula_id) VALUES "
+                + "(nome, treinamento,) VALUES "
                 + "('"+golfinho.getNome()+"', '"+golfinho.getTreinamento()+"', '"+golfinho.getJaula().getIdJaula()+"')");
             System.out.println("Dados inseridos com sucesso"); 
 
@@ -174,10 +177,8 @@ public class GolfinhoDAO {
                 golfinho.setTreinamento(treinamento);
             
             System.out.println("Informe  o número da Jaula do Golfinho (Deixar vazio para manter)");
-            int jaulaId = scanner.nextInt();
-            if (jaulaId > 0){
-                golfinho.getJaula().getIdJaula();
-            }  
+            String descricao = scanner.next();
+            golfinho.getJaula().setDescricao(descricao);
             return golfinho;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -226,7 +227,10 @@ public class GolfinhoDAO {
                 rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getInt("treinamento"),
-                rs.getInt("jaula_id")
+                rs.getInt("jaula_id"),
+                rs.getString("descricao"),
+                rs.getDate("data"),
+                rs.getString("detalhes")
             );
 
         } catch (Exception e) {

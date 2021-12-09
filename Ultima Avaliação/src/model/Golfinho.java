@@ -1,5 +1,6 @@
-package model;
+package src.model;
 
+import java.sql.Date;
 import java.util.Objects;
 
 public class Golfinho extends Animal {
@@ -7,17 +8,18 @@ public class Golfinho extends Animal {
     private Jaula jaula;
     Treinamento treinamentoo;
 
-    public Golfinho(int id, String nome,int treinamento, int jaulaId) {
+    public Golfinho(int id, String nome,int treinamento,int jaulaId,String descricao,Date data, String detalhes) {
         super(id, nome);
-        this.setTreinamento(treinamento);
-        this.getJaula().setIdJaula(jaulaId);
-        
+        this.treinamento = treinamento;
+        this.jaula = new Jaula(jaulaId, descricao);
+        this.treinamentoo = new Treinamento(data, detalhes);
+    
     }
 
     public Golfinho(String nome,int treinamento, int jaulaId) {
         super(nome);
-        this.setTreinamento(treinamento);
-        this.getJaula().setIdJaula(jaulaId); 
+        this.treinamento = treinamento;
+        this.jaula = new Jaula(jaulaId);
     }
 
 

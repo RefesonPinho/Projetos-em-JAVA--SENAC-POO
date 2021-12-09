@@ -1,4 +1,4 @@
-package model;
+package src.model;
 
 import java.sql.Date;
 
@@ -6,21 +6,10 @@ public class Treinamento {
     private int id;
     private Date data;
     private String detalhes;
-    private Golfinho golfinho;
     
-    public Treinamento(int id, Date data, String detalhes, Golfinho golfinho) {
-        this.setIdTreinamento(id);
-        this.setDataTrei(data);
-        this.setDetalhes(detalhes);
-        this.setGolfinho(golfinho);
-    }
-
-    public Golfinho getGolfinho() {
-        return golfinho;
-    }
-
-    public void setGolfinho(Golfinho golfinho) {
-        this.golfinho = golfinho;
+    public Treinamento(Date data, String detalhes) {
+        this.data = data;
+        this.detalhes= detalhes;
     }
 
     public String getDetalhes() {
@@ -31,11 +20,11 @@ public class Treinamento {
         this.detalhes = detalhes;
     }
 
-    public Date getDataTrei() {
+    public Date getDataTreinamento() {
         return data;
     }
 
-    public void setDataTrei(Date data) {
+    public void setDataTreino(Date data) {
         this.data = data;
     }
 
