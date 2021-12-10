@@ -1,10 +1,9 @@
 package src.model;
-
 import java.util.Objects;
 
 public class Animal {
-    protected int id;
-    protected String nome;
+    private int id;
+    private String nome;
 
     protected Animal(
         int id,
@@ -20,20 +19,26 @@ public class Animal {
         this.nome = nome;
     }
 
-    public void setIdAnimal(int id){
-        this.id = id;
+    protected Animal(
+        int id
+    ){
+        this.id = id;  
     }
 
-    public int getIdAnimal(){
-        return this.id;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNome(String nome){
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getNome(){
-        return this.nome;
+    public int getIdAnimal() {
+        return id;
+    }
+
+    public void setIdAnimal(int id) {
+        this.id = id;
     }
 
     // Fazendo uso do padrão de projeto Decorator 
@@ -48,11 +53,10 @@ public class Animal {
         return Objects.equals(this.getIdAnimal(), animal.getIdAnimal());
     }
 
-    
     @Override
     public String toString() {
-        return   "IdAnimal:" 
-            + getIdAnimal() + " / " + "nome:"
-            + getNome() ;
+        return   "Id :" 
+            + getIdAnimal() + " / " + "Nome:"
+            + getNome();
     }
 }

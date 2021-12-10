@@ -1,24 +1,23 @@
 package src.model;
 
-import java.util.Objects;
-
 public class Jaula {
-    private int jaulaId;
+    private int idJaula;
     private String descricao;
 
-    public Jaula(int jaulaId, String descricao) {
-        this.jaulaId = jaulaId;
+    public Jaula(
+        int idJaula,
+        String descricao
+    ){
+        this.idJaula = idJaula;
         this.descricao = descricao;
     }
 
-    public Jaula(int jaulaId) {
-        this.jaulaId = jaulaId;
+    public Jaula(
+        int idJaula
+    ){
+        this.idJaula = idJaula;
     }
 
-    public Jaula(String descricao) {
-        this.descricao = descricao;
-    }
-    
     public String getDescricao() {
         return descricao;
     }
@@ -28,30 +27,20 @@ public class Jaula {
     }
 
     public int getIdJaula() {
-        return jaulaId;
+        return idJaula;
     }
 
-    public void setIdJaula(int jaulaId) {
-        this.jaulaId = jaulaId;
+    public void setIdJaula(int idJaula) {
+        this.idJaula = idJaula;
     }
 
-    // Fazendo uso do padrão de projeto Decorator 
-    @Override
-    public boolean equals(Object j) {
-        if (j == this)
-            return true;
-        if (!(j instanceof Jaula)) {
-            return false;
-        }
-        Jaula jaula = (Jaula) j;
-        return Objects.equals(this.getIdJaula(), jaula.getIdJaula());
+    public Jaula IdJaula(int idJaula) {
+        setIdJaula(idJaula);
+        return this;
     }
 
-    
-    @Override
-    public String toString() {
-        return   "IdJaula:" 
-            + getIdJaula() + " / " + "Descricão:"
-            + getDescricao();
+    public Jaula descricao(String descricao) {
+        setDescricao(descricao);
+        return this;
     }
 }

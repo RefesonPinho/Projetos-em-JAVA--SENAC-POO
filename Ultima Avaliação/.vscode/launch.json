@@ -1,0 +1,71 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Launch JCheckBoxExemplo",
+            "request": "launch",
+            "mainClass": "JCheckBoxExemplo",
+            "projectName": "a_d434308"
+        },
+        {
+            "type": "java",
+            "name": "Launch ZoologicoBahia",
+            "request": "launch",
+            "mainClass": "ZoologicoBahia",
+            "projectName": "a_d434308"
+        },
+        {
+            "type": "java",
+            "name": "Launch Calculadora",
+            "request": "launch",
+            "mainClass": "Calculadora",
+            "projectName": "a_d434308"
+        },
+        {
+            "type": "java",
+            "name": "Launch JMenuBarExemplo",
+            "request": "launch",
+            "mainClass": "JMenuBarExemplo",
+            "projectName": "a_d434308"
+        },
+        {
+            "type": "java",
+            "name": "Launch CapturaEventoBotao",
+            "request": "launch",
+            "mainClass": "CapturaEventoBotao",
+            "projectName": "a_d434308"
+        },
+        {
+            "type": "java",
+            "name": "Launch CapturaEventoBotao",
+            "request": "launch",
+            "mainClass": "src.dao.CapturaEventoBotao",
+            "projectName": "a_d434308"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainZoologico",
+            "request": "launch",
+            "mainClass": "MainZoologico",
+            "projectName": "a_d434308"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainZoologico",
+            "request": "launch",
+            "mainClass": "MainZoologico",
+            "projectName": "Ultima Avaliação_c88cd1cc"
+        }
+    ]
+}

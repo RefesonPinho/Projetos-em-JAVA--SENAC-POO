@@ -1,20 +1,19 @@
+// Importando as bibliotecas padrões e as packages.
 package src.dao;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import src.model.Golfinho;
 
+// Criando a classe DAO.
 public class GolfinhoDAO {
     private Connection connection;
-
-    
+    // Criando as regras de negocio do CRUD e da conexão ao banco de dados.
     public int insert(String sql, Object[] atribs) throws Exception {
         try{
             PreparedStatement statement = this.startConnection().prepareStatement(
@@ -87,60 +86,43 @@ public class GolfinhoDAO {
         }
     }
 
-    public static void printGolfinho(
-        ArrayList<Golfinho> golfinhos
-    ) {
-        try {
-            for (Golfinho golfinho : golfinhos) {
-                System.out.println(golfinho);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
-    public static ArrayList<Golfinho> getGolfinhoPS(Scanner scanner) throws Exception {
+    public static void SelectGolfinhoS(Golfinho golfinho)throws Exception {
         try {
             System.out.println("Conectando ao banco de dados");
+            String sql1 = "SELECT * FROM golfinho";
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
+            Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
             System.out.println("Mostrando dados presente no banco de dados");
-            PreparedStatement stm = con.prepareStatement("SELECT * FROM golfinho;");
-            ResultSet rs = stm.executeQuery();
-            ArrayList<Golfinho> golfinhos = new ArrayList<>();
+            ResultSet rs = stm.executeQuery(sql1);
             while (rs.next()) {
-                golfinhos.add(
-                    new Golfinho(
-                       rs.getInt("id"),
-                       rs.getString("nome"),
-                       rs.getInt("treinamento"),
-                       rs.getInt("jaula_id"),
-                       rs.getString("descricao"),
-                       rs.getDate("data"),
-                       rs.getString("detalhes")
-                    )
-                );
+                stm.execute("SELECT * FROM jaula WHERE id = " + rs.getInt("jaula_id"));
+               golfinho = new Golfinho(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getInt("treinamento"),
+                        rs.getInt("jaula_id"));
+                        System.out.println(golfinho);
             }
             con.close();
-            return golfinhos;
             
         } catch (Exception e) {
             throw new Exception(e.getMessage());
-        }
-          
+        }    
     }
 
     public static Golfinho getGolfinhoInsert(Scanner scanner) {
         System.out.println("Informe o nome do Golfinho");
         String nome = scanner.next();
-        System.out.println("Informe o numero de treinamentos do Golfinho");
+        System.out.println("Informe o número de Treinamento do Golfinho");
         int treinamento = scanner.nextInt();
-        System.out.println("Informe o número da Jaula do Golfinho");
-        int descricao = scanner.nextInt();
+        System.out.println("Informe a jaula do Golfinho");
+        int jaula = scanner.nextInt();
         return new Golfinho(
             nome,
             treinamento,
-            descricao
+            jaula
         );
     }
 
@@ -151,14 +133,10 @@ public class GolfinhoDAO {
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
             System.out.println("Inserindo dados no banco de dados");
-            boolean sql = stm.execute("INSERT INTO golfinho "
-                + "(nome, treinamento,) VALUES "
-                + "('"+golfinho.getNome()+"', '"+golfinho.getTreinamento()+"', '"+golfinho.getJaula().getIdJaula()+"')");
+            stm.execute("INSERT INTO golfinho "
+                + "(nome, treinamento,jaula_id) VALUES "
+                + "('"+golfinho.getNome()+"', '"+golfinho.getTreinamento()+"', '"+golfinho.getJaula().getIdJaula());
             System.out.println("Dados inseridos com sucesso"); 
-
-            if(!sql) {
-                System.out.println("Falha na execução");
-            }
             con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -167,19 +145,23 @@ public class GolfinhoDAO {
 
     public static Golfinho getGolfinhoUpdate(Scanner scanner) throws Exception {
         try {
-           Golfinho golfinho = getGolfinho(scanner);
-            System.out.println("Informe o nome do golfinho (Deixar vazio para manter)");
-            String nome = scanner.next();
-                golfinho.setNome(nome);
-            
-            System.out.println("Informe o numero de treinamentos do Golfinho(Deixar vazio para manter)");
-            int treinamento = scanner.nextInt();
-                golfinho.setTreinamento(treinamento);
-            
-            System.out.println("Informe  o número da Jaula do Golfinho (Deixar vazio para manter)");
-            String descricao = scanner.next();
-            golfinho.getJaula().setDescricao(descricao);
-            return golfinho;
+            Golfinho golfinho = getGolfinho(scanner);
+            System.out.println("Informte o nome Id )");
+            int id = scanner.nextInt();
+            golfinho.setIdAnimal(id);;
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM golfinho WHERE id = " + id);
+        
+            if (!rs.next()) {
+                throw new Exception("Id inválido");
+            }
+            return new Golfinho(
+                rs.getInt("id"),
+                rs.getString("nome"),
+                rs.getInt("treinamento"),
+                rs.getInt("jaula_id"));
+        
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -194,11 +176,12 @@ public class GolfinhoDAO {
             PreparedStatement pStm = con.prepareStatement("UPDATE golfinho SET "
                             + " nome = ?"
                             + ", treinamento = ?"
-                            + ", jaula_id= ?"
+                            + ", jaula_id = ?"
                             + " WHERE id = ?");
             pStm.setString(1, golfinho.getNome());
-            pStm.setInt(2, golfinho.getTreinamento());
-            pStm.setInt(3, golfinho.getJaula().getIdJaula());
+            pStm.setInt(3, golfinho.getTreinamento());
+            pStm.setInt(4, golfinho.getJaula().getIdJaula());
+            pStm.setInt(5, golfinho.getIdAnimal());
             System.out.println("Dados atualizados com sucesso"); 
             if (pStm.executeUpdate() <= 0) {
                 System.out.println("Falha na execução.");
@@ -227,10 +210,7 @@ public class GolfinhoDAO {
                 rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getInt("treinamento"),
-                rs.getInt("jaula_id"),
-                rs.getString("descricao"),
-                rs.getDate("data"),
-                rs.getString("detalhes")
+                rs.getInt("jaula_id")
             );
 
         } catch (Exception e) {
@@ -245,19 +225,12 @@ public class GolfinhoDAO {
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
             System.out.println("Deletando Dados do banco");
-            boolean sql = stm.execute("DELETE FROM golfinho "
+            stm.execute("DELETE FROM golfinho "
                 + " WHERE id = " + golfinho.getIdAnimal());
             System.out.println("Dados deletado com sucesso");    
-            if(!sql) {
-                System.out.println("Falha na execução");
-            }
             con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public static void insertGolfinhoS(ArrayList<Golfinho> golfinhoPS) {
-        System.out.println(golfinhoPS);
     }
 }

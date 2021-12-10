@@ -1,42 +1,50 @@
 package src.model;
-
 import java.sql.Date;
+
 
 public class Alimentacao {
     private int id;
-    private Date data;
+    private int leaoId;
+    private Date dataAlimentacao;
     private String detalhes;
     private Leao leao;
-    
-    public Alimentacao(int id, Date data, String detalhes, Leao leao) {
-        this.setIdAlimentacao(id);
-        this.setData(data);
-        this.setDetalhes(detalhes);
-        this.setLeao(leao);
+
+    public Alimentacao(
+        int id,
+        int leaoId,
+        Date dataAlimentacao,
+        String detalhes
+    ){
+        this.id = id;
+        this.leaoId = leaoId;
+        this.dataAlimentacao = dataAlimentacao;
+        this.detalhes = detalhes;  
     }
 
-    public Leao getLeao() {
-        return leao;
+    public Alimentacao(
+        int id,
+        Date dataAlimentacao,
+        String detalhes
+    ){
+        this.id = id;
+        this.dataAlimentacao = dataAlimentacao;
+        this.detalhes = detalhes;  
     }
 
-    public void setLeao(Leao leao) {
-        this.leao = leao;
+    public Date getDataAlimentacao() {
+        return dataAlimentacao;
     }
 
-    public String getDetalhes() {
-        return detalhes;
+    public void setDataAlimentacao(Date dataAlimentacao) {
+        this.dataAlimentacao = dataAlimentacao;
     }
 
-    public void setDetalhes(String detalhes) {
-        this.detalhes = detalhes;
+    public int getLeaoId() {
+        return leaoId;
     }
 
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
+    public void setLeaoId(int leaoId) {
+        this.leaoId = leaoId;
     }
 
     public int getIdAlimentacao() {
@@ -47,4 +55,22 @@ public class Alimentacao {
         this.id = id;
     }
 
+    public String getDetalhes() {
+        return detalhes;
+    }
+
+    public void setDetalhes(String detalhes) {
+        this.detalhes = detalhes;
+    }
+
+    public Leao getLeao() {
+        return leao;
+    }
+
+    public void setLeao(Leao leao) {
+        this.leao = leao;
+    }
+
+
+    
 }
