@@ -1,85 +1,60 @@
-import static java.awt.event.KeyEvent.VK_ESCAPE;
+package src.view;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
+public class ZoologicoBahia extends JFrame {
 
-public class ZoologicoBahia extends JFrame implements KeyListener {
-
-    private JLabel label = new JLabel("Listar Leão");
+    private JButton listarLeao;
+    private JButton cadastrarLeao;
+    private JButton atualizarLeao;
+    private JButton deletarLeao;
+    private JButton listarGolfinho;
+    private JButton cadastrarGolfinho;
+    private JButton atualizarGolfinho;
+    private JButton deletarGolfinho;
     
+    JButton button1 = new JButton("Listar Leão");
+    JButton button2 = new JButton("Cadastrar Leão");
+    JButton button3 = new JButton("Atualizar Leão");
+    JButton button4 = new JButton("Deletar Leão");
+    JButton button5 = new JButton("Listar Golfinho");
+    JButton button6 = new JButton("Cadastrar Golfinho");
+    JButton button7 = new JButton("Atualizar Golfinho");
+    JButton button8 = new JButton("Deletar Golfinho");
 
-    private JMenuBar menuBar = new JMenuBar();
-    
-
-    
-
-    
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-       
-    }
-
-    public void teclouNumeros(String string) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e){
-        if(e.getKeyCode() == VK_ESCAPE){
-            int selectedOption = JOptionPane.showConfirmDialog(
-                this, 
-                "Deseja Sair Realmente?", 
-                "Atenção",
-                JOptionPane.YES_NO_OPTION
-            );
-
-            if(selectedOption == JOptionPane.YES_OPTION){
-                dispose();
-                System.exit(0);
-            }
-        }
-    
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-       
+    public ZoologicoBahia() {
         
-    }
+        listarLeao = new JButton("Mensagem");
+        cadastrarLeao = new JButton("Fechar");
+        atualizarLeao = new JButton("Mensagem");
+        deletarLeao = new JButton("Fechar");
+        listarGolfinho = new JButton("Mensagem");
+        cadastrarGolfinho = new JButton("Fechar");
+        atualizarGolfinho = new JButton("Mensagem");
+        deletarGolfinho = new JButton("Fechar");
 
-    public ZoologicoBahia(){
-        super("ZOOLANDIA 1.0");
+        Container pane = this.getContentPane();
+        pane.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        Container pane1 = this.getContentPane();
-        JPanel pane2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        pane.add(button1);
+        pane.add(button2);
+        pane.add(button3);
+        pane.add(button4);
+        pane.add(button5);
+        pane.add(button6);
+        pane.add(button7);
+        pane.add(button8);
 
-        pane1.setLayout(new GridLayout(2,1));
-        pane2.add(label);
-       
+                
 
-        this.setJMenuBar(menuBar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1000,200);
+        this.setSize(600,300);
         this.setVisible(true);
-
-        
-        setSize(285,480);
-        Dimension resVideo = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension tamForm = getSize();
-
-        setLocation((resVideo.width - tamForm.width)/2, (resVideo.height - tamForm.height)/2);
-        setResizable(false);
-        setVisible(true);
-
     }
 
-    
     public static void main(String[] args){
-        ZoologicoBahia application = new ZoologicoBahia();
-        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ZoologicoBahia janela = new ZoologicoBahia();
     }
-   
 }
 

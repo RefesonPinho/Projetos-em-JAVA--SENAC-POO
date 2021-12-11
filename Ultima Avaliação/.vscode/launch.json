@@ -4,7 +4,34 @@
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "Launch ListarLeao",
+            "request": "launch",
+            "mainClass": "src.view.ListarLeao",
+            "projectName": "clone git_2d99cff5"
+        },
+        {
+            "type": "java",
+            "name": "Launch ZoologicoBahia",
+            "request": "launch",
+            "mainClass": "src.view.ZoologicoBahia",
+            "projectName": "clone git_2d99cff5"
+        },
+        {
+            "type": "java",
+            "name": "Launch JFrameExemplo",
+            "request": "launch",
+            "mainClass": "src.JFrameExemplo",
+            "projectName": "clone git_2d99cff5"
+        },
+        {
+            "type": "java",
+            "name": "Launch ZoologicoBahia",
+            "request": "launch",
+            "mainClass": "view.ZoologicoBahia",
+            "projectName": "Ultima Avaliação_2693a6ea"
+        },
         {
             "type": "java",
             "name": "Launch JCheckBoxExemplo",
