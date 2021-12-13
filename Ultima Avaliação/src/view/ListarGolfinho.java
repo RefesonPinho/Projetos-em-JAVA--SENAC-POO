@@ -12,11 +12,11 @@ public class ListarGolfinho extends JFrame {
     // Criando a classe construtora
     public ListarGolfinho(){
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel("-- SELECIONAR GOLFINHOS! -- ", JLabel.CENTER);
+        JLabel listar = new JLabel("-- Listar Golfinhos! -- ", JLabel.CENTER);
         JButton voltar = new JButton("Voltar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pane.add(title);
+        pane.add(listar);
         pane.add(voltar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(250,400);
@@ -25,14 +25,14 @@ public class ListarGolfinho extends JFrame {
 
         voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+             
                 new ZoologicoBahia();
             }
         });
     }
 
     
-   // Metodo para selecionar todos os golfinhos cadastrados
+   // Metodo para selecionar todos os golfinhos 
     public static void selectGolfinho(Golfinho golfinho) throws Exception {
         try {
             GolfinhoDAO.SelectGolfinhoS(golfinho);

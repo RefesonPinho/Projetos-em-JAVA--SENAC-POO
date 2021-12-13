@@ -13,28 +13,28 @@ public class AlterarLeao extends JFrame{
     // Criando a classe construtora
     public AlterarLeao(){
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel(" -- Alterar o cadastro do Leão -- ", JLabel.CENTER);
-        JLabel infoName = new JLabel("Informe o nome do leão: ", JLabel.CENTER);
+        JLabel titulo = new JLabel(" -- Alterar o cadastro do Leão -- ", JLabel.CENTER);
+        JLabel nome = new JLabel("Informe o nome do leão: ", JLabel.CENTER);
         JButton voltar = new JButton("Voltar");
-        JTextField insertName = new JTextField(15);
-        JLabel infoId = new JLabel("Informe o id do Leão: ", JLabel.CENTER);
-        JTextField insertID = new JTextField(15);
+        JTextField inseriNome = new JTextField(15);
+        JLabel id = new JLabel("Informe o id do Leão: ", JLabel.CENTER);
+        JTextField inseriID = new JTextField(15);
         JLabel infoAlimento = new JLabel("Informe a quantidade de alimento: ", JLabel.CENTER);
-        JTextField insertAlimento = new JTextField(15);
+        JTextField inseriAlimento = new JTextField(15);
         JLabel infoVisita = new JLabel("Informe a quantidade de visitantes: ", JLabel.CENTER);
-        JTextField insertVisita = new JTextField(15);
+        JTextField inseriVisita = new JTextField(15);
         JButton cadastrar = new JButton("Cadastrar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pane.add(title);
-        pane.add(infoId);
-        pane.add(insertID);
-        pane.add(infoName);
-        pane.add(insertName);
+        pane.add(titulo);
+        pane.add(id);
+        pane.add(inseriID);
+        pane.add(nome);
+        pane.add(inseriNome);
         pane.add(infoAlimento);
-        pane.add(insertAlimento);
+        pane.add(inseriAlimento);
         pane.add(infoVisita);
-        pane.add(insertVisita);
+        pane.add(inseriVisita);
         pane.add(cadastrar);
         pane.add(voltar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

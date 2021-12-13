@@ -10,15 +10,15 @@ public class ExcluirLeao extends JFrame{
     // Criando a classe construtora
     public ExcluirLeao(){
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel("-- EXCLUIR LEÃO! --    ", JLabel.CENTER);
-        JLabel selectId = new JLabel("\n Informe o Id do leão: ", JLabel.CENTER);
+        JLabel titulo = new JLabel("-- Excluir Leão! --    ", JLabel.CENTER);
+        JLabel id = new JLabel("\n Informe o Id do leão: ", JLabel.CENTER);
         JTextField informaId = new JTextField(15);
         JButton deletar = new JButton("Deletar");
         JButton voltar = new JButton("Voltar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pane.add(title);
-        pane.add(selectId);
+        pane.add(titulo);
+        pane.add(id);
         pane.add(informaId);
         pane.add(deletar);
         pane.add(voltar);
@@ -35,7 +35,7 @@ public class ExcluirLeao extends JFrame{
         });
     }
 
-    // Metodo para exclui Leão
+    // Metodo para excluir Leão
 
     public static void deleteLeao(int id) throws Exception {
         LeaoDAO.deleteLeaoPS(id);

@@ -12,28 +12,28 @@ public class CadastrarLeao extends JFrame{
     // Criando a classe construtora
     public CadastrarLeao(){
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel(" -- CADASTRAR LEÃO! -- ", JLabel.CENTER);
-        JLabel infoName = new JLabel("Informe o nome do leão: ", JLabel.CENTER);
+        JLabel titulo = new JLabel(" -- CADASTRAR LEÃO! -- ", JLabel.CENTER);
+        JLabel nome = new JLabel("Informe o nome do leão: ", JLabel.CENTER);
         JButton voltar = new JButton("Voltar");
-        JTextField insertName = new JTextField(15);
+        JTextField inseriNome = new JTextField(15);
         JLabel infoAlimento = new JLabel("Informe a quantidade de alimento: ", JLabel.CENTER);
-        JTextField insertAlimento = new JTextField(15);
+        JTextField inseriAlimento = new JTextField(15);
         JLabel infoVisita = new JLabel("Informe a quantidade de visitantes: ", JLabel.CENTER);
-        JTextField insertVisita = new JTextField(15);
+        JTextField inseriVisita = new JTextField(15);
         JLabel descricao = new JLabel("Descrição: ", JLabel.CENTER);
-        JTextArea insertDesc = new JTextArea(10, 15);
+        JTextArea inseriDesc = new JTextArea(10, 15);
         JButton cadastrar = new JButton("Cadastrar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pane.add(title);
-        pane.add(infoName);
-        pane.add(insertName);
+        pane.add(titulo);
+        pane.add(nome);
+        pane.add(inseriNome);
         pane.add(infoAlimento);
-        pane.add(insertAlimento);
+        pane.add(inseriAlimento);
         pane.add(infoVisita);
-        pane.add(insertVisita);
+        pane.add(inseriVisita);
         pane.add(descricao);
-        pane.add(insertDesc);
+        pane.add(inseriDesc);
         pane.add(cadastrar);
         pane.add(voltar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

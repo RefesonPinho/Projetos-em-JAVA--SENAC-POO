@@ -12,24 +12,24 @@ public class CadastrarGolfinho extends JFrame{
     // Criando a classe construtora
     public CadastrarGolfinho(){
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel(" -- CADASTRAR GOLFINHO! -- ", JLabel.CENTER);
-        JLabel infoName = new JLabel("Informe o nome do golfinho: ", JLabel.CENTER);
+        JLabel titulo = new JLabel(" -- CADASTRAR GOLFINHO! -- ", JLabel.CENTER);
+        JLabel nome = new JLabel("Informe o nome do golfinho: ", JLabel.CENTER);
         JButton voltar = new JButton("Voltar");
-        JTextField insertName = new JTextField(15);
-        JLabel infoTreino = new JLabel("Informe a quantidade de treinamento: ", JLabel.CENTER);
-        JTextField insertTreino = new JTextField(15);
-        JLabel infoDesc = new JLabel("Informe a descrição: ", JLabel.CENTER);
-        JTextArea insertDesc = new JTextArea(10, 15);
+        JTextField inseriNome = new JTextField(15);
+        JLabel treino = new JLabel("Informe a quantidade de treinamento: ", JLabel.CENTER);
+        JTextField inseritreino = new JTextField(15);
+        JLabel desc = new JLabel("Informe a descrição: ", JLabel.CENTER);
+        JTextArea inseriDesc = new JTextArea(10, 15);
         JButton cadastrar = new JButton("Cadastrar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pane.add(title);
-        pane.add(infoName);
-        pane.add(insertName);
-        pane.add(infoTreino);
-        pane.add(insertTreino);
-        pane.add(infoDesc);
-        pane.add(insertDesc);
+        pane.add(titulo);
+        pane.add(nome);
+        pane.add(inseriNome);
+        pane.add(treino);
+        pane.add(inseritreino);
+        pane.add(desc);
+        pane.add(inseriDesc);
         pane.add(cadastrar);
         pane.add(voltar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

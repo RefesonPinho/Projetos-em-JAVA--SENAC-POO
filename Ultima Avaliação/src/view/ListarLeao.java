@@ -13,11 +13,11 @@ public class ListarLeao extends JFrame{
     public ListarLeao(){
 
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel("-- Listar LEÃO! --", JLabel.CENTER);
+        JLabel listar = new JLabel("-- Listar Leão! --", JLabel.CENTER);
         JButton voltar = new JButton("Voltar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pane.add(title);
+        pane.add(listar);
         pane.add(voltar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(250,400);
