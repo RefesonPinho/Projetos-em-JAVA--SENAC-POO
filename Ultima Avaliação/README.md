@@ -1,1 +1,1 @@
-Nesse repositório consta a quarta avaliação em sala tendo como base as avaliações dois e três e nessa avaliação criamos um projeto de CRUD  .
+Nesse repositório consta a ultima  avaliação em sala tendo como base todo aprendizado ao longo do semestre onde criamos um projeto de CRUD juntamente com interface gráfica  .
