@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CadastrarLeao",
+            "request": "launch",
+            "mainClass": "src.view.CadastrarLeao",
+            "projectName": "outros_45806d81"
+        },
+        {
+            "type": "java",
+            "name": "Launch ListarLeao",
+            "request": "launch",
+            "mainClass": "src.view.ListarLeao",
+            "projectName": "outros_45806d81"
+        },
+        {
+            "type": "java",
+            "name": "Launch ZoologicoBahia",
+            "request": "launch",
+            "mainClass": "src.view.ZoologicoBahia",
+            "projectName": "outros_45806d81"
+        },
+        {
+            "type": "java",
+            "name": "Launch ZoologicoBahia",
+            "request": "launch",
+            "mainClass": "src.view.ZoologicoBahia",
+            "projectName": "Ultima Avaliação_1510b501"
+        },
+        {
+            "type": "java",
             "name": "Launch ListarLeao",
             "request": "launch",
             "mainClass": "src.view.ListarLeao",

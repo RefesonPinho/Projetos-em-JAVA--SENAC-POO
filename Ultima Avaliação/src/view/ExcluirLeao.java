@@ -1,23 +1,26 @@
 // Importando as bibliotecas padrões e as packages.
 package src.view;
-import java.sql.SQLException;
-import src.dao.LeaoDAO;
-import src.model.Leao;
 import javax.swing.*;
+import src.dao.LeaoDAO;
 import java.awt.*;
 
-// Criando a classe ListarLeao a partir da herança da classe Pai que é a classe JFrame.
-public class ListarLeao extends JFrame{
+// Criando a classe ExcluirLeao a partir da herança da classe Pai que é a classe JFrame.
+public class ExcluirLeao extends JFrame{
 
     // Criando a classe construtora
-    public ListarLeao(){
-
+    public ExcluirLeao(){
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel("-- Listar LEÃO! --", JLabel.CENTER);
+        JLabel title = new JLabel("-- EXCLUIR LEÃO! --    ", JLabel.CENTER);
+        JLabel selectId = new JLabel("\n Informe o Id do leão: ", JLabel.CENTER);
+        JTextField informaId = new JTextField(15);
+        JButton deletar = new JButton("Deletar");
         JButton voltar = new JButton("Voltar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
         pane.add(title);
+        pane.add(selectId);
+        pane.add(informaId);
+        pane.add(deletar);
         pane.add(voltar);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(250,400);
@@ -28,20 +31,13 @@ public class ListarLeao extends JFrame{
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
                 new ZoologicoBahia();
-                 
             }
         });
     }
 
+    // Metodo para exclui Leão
 
-    // Metodo para selecionar os Leõs
-    public static void selectLeao(Leao leao) throws Exception {
-        try {
-                LeaoDAO.SelectLeaoS(leao);
-           
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void deleteLeao(int id) throws Exception {
+        LeaoDAO.deleteLeaoPS(id);
     }
 }
-

@@ -1,19 +1,18 @@
 // Importando as bibliotecas padrões e as packages.
 package src.view;
 import java.sql.SQLException;
-import src.dao.LeaoDAO;
-import src.model.Leao;
+import src.dao.GolfinhoDAO;
+import src.model.Golfinho;
 import javax.swing.*;
 import java.awt.*;
 
-// Criando a classe ListarLeao a partir da herança da classe Pai que é a classe JFrame.
-public class ListarLeao extends JFrame{
+// Criando a classe ListarGolfinh a partir da herança da classe Pai que é a classe JFrame.
+public class ListarGolfinho extends JFrame {
 
     // Criando a classe construtora
-    public ListarLeao(){
-
+    public ListarGolfinho(){
         // Criando os botões, as label e os tratamentos de eventos
-        JLabel title = new JLabel("-- Listar LEÃO! --", JLabel.CENTER);
+        JLabel title = new JLabel("-- SELECIONAR GOLFINHOS! -- ", JLabel.CENTER);
         JButton voltar = new JButton("Voltar");
         Container pane = this.getContentPane();
         pane.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -28,20 +27,18 @@ public class ListarLeao extends JFrame{
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
                 new ZoologicoBahia();
-                 
             }
         });
     }
 
-
-    // Metodo para selecionar os Leõs
-    public static void selectLeao(Leao leao) throws Exception {
+    
+   // Metodo para selecionar todos os golfinhos cadastrados
+    public static void selectGolfinho(Golfinho golfinho) throws Exception {
         try {
-                LeaoDAO.SelectLeaoS(leao);
-           
+            GolfinhoDAO.SelectGolfinhoS(golfinho);
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 }
-

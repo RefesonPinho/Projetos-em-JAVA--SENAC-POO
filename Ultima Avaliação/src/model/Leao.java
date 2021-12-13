@@ -1,30 +1,30 @@
+// Importando as bibliotecas padrões e as packages.
 package src.model;
 import java.util.Objects;
 import java.util.ArrayList;
 
-
+// Criando a classe Cliente a partir da herança da classe Pai que é a classe Animal
 public class Leao extends Animal {
     private int alimentacao = 6;
     private int visitantes;
     private Jaula jaula;
     private ArrayList<Alimentacao> alimentacoes = new  ArrayList <>();
-    
+    // Criando as classes construtora de Treinamento fazendo uso do POLIMORFISMO
     public Leao(
         int id,
         String nome,
         int alimentacao,
         int visitantes,
-        Jaula jaula
+        int idJaula
        
     ){
         super(id, nome);
         this.alimentacao = alimentacao;
         this.visitantes =visitantes;
-        this.jaula = jaula;
+        this.jaula = new Jaula(idJaula);
     }
 
     public Leao(
-        int id,
         String nome,
         int alimentacao,
         int visitantes,
@@ -37,6 +37,7 @@ public class Leao extends Animal {
         this.jaula = new Jaula(idJaula);
         
     }
+    // Criando os métodos setters e getters para poder ter acesso controlado aos atributos encapsulados.
 
     public int getAlimentacao() {
         return alimentacao;
@@ -61,6 +62,14 @@ public class Leao extends Animal {
     public void setJaula(Jaula jaula) {
         this.jaula = jaula;
     }
+
+    public void adicionarAlimentacao(Alimentacao alimentacao) {
+        this.alimentacoes.add(alimentacao);
+    }
+
+    public void setAlimentacao(Alimentacao alimentacao) {
+        this.alimentacoes.add(alimentacao);
+    }    
 
     public ArrayList<Alimentacao> getAlimentacoes() {
         return alimentacoes;
@@ -116,11 +125,7 @@ public class Leao extends Animal {
             + getNome() + " / " + "Alimentacao:" 
             + getAlimentacao()+ " / " + "Visitantes:" 
             + getVisitantes() + " / " + "Jaula:"
-            + getJaula().getIdJaula() + " / " + "Descricao:"
-            + getJaula().getDescricao()+ " / " + "Id da Alimentacao:" 
-            + getAlimentacao()+ " / " + "Data da Alimentacao:"
-            + getAlimentacao() + " / " + "Detalhes:"
-            + getJaula().getDescricao();
+            + getJaula().getIdJaula();
 
     }
     

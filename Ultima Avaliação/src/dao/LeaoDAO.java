@@ -1,18 +1,22 @@
 // Importando as bibliotecas padrões e as packages.
 package src.dao;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
+
+import src.model.Alimentacao;
+import src.model.Jaula;
 import src.model.Leao;
 
 
 // Criando a classe DAO.
 public class LeaoDAO {
     private Connection connection;
+    private static ResultSet rsAliment;
     // Criando as regras de negocio do CRUD e da conexão ao banco de dados.
     public int insert(String sql, Object[] atribs) throws Exception {
         try{
@@ -86,58 +90,65 @@ public class LeaoDAO {
         }
     }
 
-    
+
+
+    //Criando os métodos do Crud do Leão no banco de dados
+
     public static void SelectLeaoS(Leao leao) throws Exception {
         try {
             System.out.println("Conectando ao banco de dados");
-            String sql1 = "SELECT * FROM leao";
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
             System.out.println("Mostrando dados presente no banco de dados");
-            ResultSet rs = stm.executeQuery(sql1);
+            ResultSet rs = stm.executeQuery("SELECT * FROM leao l INNER JOIN jaula j ON l.jaula_id = j.id");
             while (rs.next()) {
-                stm.execute("SELECT * FROM jaula WHERE id = " + rs.getInt("jaula_id"));
                leao = new Leao(
-                        rs.getInt("id"),
-                        rs.getString("nome"),
-                        rs.getInt("alimentacao"),
-                        rs.getInt("visitantes"),
-                        rs.getInt("jaula_id"));
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getInt("alimentacao"),
+                    rs.getInt("visitantes"),
+                    rs.getInt("jaula_id"));
+                    rsAliment = stm.executeQuery("SELECT * FROM alimentacao WHERE idAlimentacao = " +  rsAliment.getInt("idAlimentacao"));
+                    while (rsAliment.next()) {
+                        new Alimentacao (
+                            rsAliment.getInt("id"),
+                            Date.valueOf("1990-01-01"),
+                            rsAliment.getString("detalhes"),
+                            leao
+                            );            
                         System.out.println(leao);
-            }
+                    }
+            }        
             con.close();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }             
     }
-
-
     
-    public static void insertLeaoS(Leao leao) {
+    public static void insertLeaoS(Leao leao,Jaula jaula) {
         try{
             System.out.println("Conectando ao banco de dados");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
             System.out.println("Inserindo dados no banco de dados");
+            stm.execute("Insert into jaula " + "(descricao) VALUES  ('"+jaula.getDescricao()+"')");
+            System.out.println("Jaula adicionada com sucesso");
             stm.execute("INSERT INTO leao "
-                + "(nome, alimentacao,visitantes,jaula_id) VALUES "
-                + "('"+leao.getNome()+"', '"+leao.getAlimentacao() +"', '"+leao.getVisitantes()+"', '"+leao.getJaula().getIdJaula());
-            
-            System.out.println("Dados inseridos com sucesso"); 
+                + "(nome, alimentacao, visitantes, jaula_id) VALUES "
+                + "('"+leao.getNome()+"', '"+leao.getAlimentacao()+"', '"+leao.getVisitantes()+"', '"+leao.getJaula().getIdJaula()+"')");
+            System.out.println("Dados inseridos com sucesso");
+            System.out.println(leao); 
             con.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static Leao getLeaoUpdate(Scanner scanner) throws Exception {
+    public static void  getLeao(int id) throws Exception {
         try {
-            Leao leao = getLeao(scanner);
-            System.out.println("Informe o nome Id )");
-            int id = scanner.nextInt();
-            leao.setIdAnimal(id);
+
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM leao WHERE id = " + id);
@@ -145,19 +156,19 @@ public class LeaoDAO {
             if (!rs.next()) {
                 throw new Exception("Id inválido");
             }
-            return new Leao(
+            Leao leao= new Leao(
                 rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getInt("alimentacao"),
                 rs.getInt("visitantes"),
                 rs.getInt("jaula_id"));
-        
+                System.out.println(leao);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
-    public static void updateLeaoS(Leao leao) {
+    public static void updateLeaoS(Leao leao, Jaula jaula) {
         try {
             System.out.println("Conectando ao banco de dados");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
@@ -176,49 +187,19 @@ public class LeaoDAO {
         }
     }
 
-    public static Leao getLeao(Scanner scanner) throws Exception { 
-        try {
-            
-            System.out.println("Informe o  Id do Golfinho )");
-            int id = scanner.nextInt();
-            System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
-            Statement stm = con.createStatement();
-            System.out.println("Banco de Dados conectado");
-
-            ResultSet rs = stm.executeQuery("SELECT * FROM leao WHERE id = " + id);
-            
-            if(!rs.next()) {
-                throw new Exception("Id inválido");
-            }
-            
-            return new Leao(
-                rs.getInt("id"),
-                rs.getString("nome"),
-                rs.getInt("alimentacao"),
-                rs.getInt("visitantes"),
-                rs.getInt("jaula_id")
-            );
-            
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    public static void deleteLeaoPS(Leao leao) {
+    public static void deleteLeaoPS(int id) {
         try {
             System.out.println("Conectando ao banco de dados");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
-            System.out.println("Banco de Dados conectado");
-            System.out.println("Deletando Dados do banco");
-            PreparedStatement pStm = con.prepareStatement("DELETE FROM leao WHERE id = ?");
-            pStm.setInt(1, leao.getIdAnimal());
-            System.out.println("Dados deletado com sucesso");  
-            if(pStm.executeUpdate() <= 0) {
-                System.out.println("Falha na execução.");
+            Statement statement = con.createStatement();
+            boolean sql = statement.execute("DELETE FROM leao WHERE id = "+ id);
+            if(!sql){
+                System.out.println("\n Leão deletado com sucesso! ");
+            } else {
+                System.out.println("\n Deu ruim, leão não foi deletado! ");
             }
             con.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }

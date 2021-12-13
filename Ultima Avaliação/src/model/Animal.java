@@ -1,10 +1,11 @@
+// Importando as bibliotecas padrões e as packages.
 package src.model;
 import java.util.Objects;
-
+//Criando a classe Pai Animal
 public class Animal {
     private int id;
     private String nome;
-
+    // Criando as classes construtora de Animal fazendo uso do POLIMORFISMO
     protected Animal(
         int id,
         String nome
@@ -24,7 +25,8 @@ public class Animal {
     ){
         this.id = id;  
     }
-
+ 
+    // Criando os métodos setters e getters para poder ter acesso controlado aos atributos encapsulados.
     public String getNome() {
         return nome;
     }

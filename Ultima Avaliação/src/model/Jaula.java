@@ -1,9 +1,14 @@
+
+// Importando a package
 package src.model;
 
+import java.util.Objects;
+
+// Criando a classe Jaula
 public class Jaula {
     private int idJaula;
     private String descricao;
-
+    // Criando as classes construtora de Jaula fazendo uso do POLIMORFISMO
     public Jaula(
         int idJaula,
         String descricao
@@ -17,6 +22,14 @@ public class Jaula {
     ){
         this.idJaula = idJaula;
     }
+
+    public Jaula(
+        String descricao
+    ){
+        this.descricao = descricao;
+    }
+    
+    // Criando os métodos setters e getters para poder ter acesso controlado aos atributos encapsulados.
 
     public String getDescricao() {
         return descricao;
@@ -43,4 +56,23 @@ public class Jaula {
         setDescricao(descricao);
         return this;
     }
+
+     // Fazendo uso do padrão de projeto Decorator 
+     @Override
+     public boolean equals(Object j) {
+         if (j == this)
+             return true;
+         if (!(j instanceof Jaula)) {
+             return false;
+         }
+         Jaula jaula = (Jaula) j;
+         return Objects.equals(this.getIdJaula(), jaula.getIdJaula());
+     }
+ 
+     @Override
+     public String toString() {
+         return   "Id da Jaula :" 
+             + getIdJaula() + " / " + "Descricão:"
+             + getDescricao();
+     }
 }

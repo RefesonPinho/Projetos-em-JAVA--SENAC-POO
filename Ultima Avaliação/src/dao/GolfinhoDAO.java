@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import src.model.Golfinho;
+import src.model.Jaula;
 
 // Criando a classe DAO.
 public class GolfinhoDAO {
@@ -86,7 +87,8 @@ public class GolfinhoDAO {
         }
     }
 
-
+    //Criando os métodos do Crud do Golfimho no banco de dados
+    
     public static void SelectGolfinhoS(Golfinho golfinho)throws Exception {
         try {
             System.out.println("Conectando ao banco de dados");
@@ -126,13 +128,15 @@ public class GolfinhoDAO {
         );
     }
 
-    public static void insertGolfinhoS(Golfinho golfinho) {
+    public static void insertGolfinhoS(Golfinho golfinho, Jaula jaula) {
         try{
             System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://loc5alhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             System.out.println("Banco de Dados conectado");
             System.out.println("Inserindo dados no banco de dados");
+            stm.execute("Insert into jaula (id, descricao) VALUES ('"+jaula.getIdJaula()+"', '"+jaula.getDescricao()+"')");
+            System.out.println("Jaula adicionada com sucesso"); 
             stm.execute("INSERT INTO golfinho "
                 + "(nome, treinamento,jaula_id) VALUES "
                 + "('"+golfinho.getNome()+"', '"+golfinho.getTreinamento()+"', '"+golfinho.getJaula().getIdJaula());
@@ -143,12 +147,9 @@ public class GolfinhoDAO {
         }
     }
 
-    public static Golfinho getGolfinhoUpdate(Scanner scanner) throws Exception {
+    public static void  getGolfinho(int id) throws Exception {
         try {
-            Golfinho golfinho = getGolfinho(scanner);
-            System.out.println("Informte o nome Id )");
-            int id = scanner.nextInt();
-            golfinho.setIdAnimal(id);;
+            
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM golfinho WHERE id = " + id);
@@ -156,18 +157,19 @@ public class GolfinhoDAO {
             if (!rs.next()) {
                 throw new Exception("Id inválido");
             }
-            return new Golfinho(
+            Golfinho golfinho = new Golfinho(
                 rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getInt("treinamento"),
                 rs.getInt("jaula_id"));
+                System.out.println(golfinho);
         
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
-    public static void updateGolfinhoPS(Golfinho golfinho) {
+    public static void updateGolfinhoPS(Golfinho golfinho,Jaula jaula) {
         try {
             System.out.println("Conectando ao banco de dados");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
@@ -192,44 +194,19 @@ public class GolfinhoDAO {
         }
     }
 
-    public static Golfinho getGolfinho(Scanner scanner) throws Exception { 
-        try {
-            
-            System.out.println("Informe o ID do Golfinho: ");
-            int id = scanner.nextInt();
-            System.out.println("Conectando ao banco de dados");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
-            Statement stm = con.createStatement();
-            System.out.println("Banco de Dados conectado");
-            ResultSet rs = stm.executeQuery("SELECT * FROM Golfinho WHERE id = " + id);
-            
-            if(!rs.next()) {
-                throw new Exception("Id inválido");
-            }
-            return new Golfinho(
-                rs.getInt("id"),
-                rs.getString("nome"),
-                rs.getInt("treinamento"),
-                rs.getInt("jaula_id")
-            );
 
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    public static void deleteGolfinhoS(Golfinho golfinho) {
+    public static void deleteGolfinhoS(int id) {
         try {
             System.out.println("Conectando ao banco de dados");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC", "root", "");
-            Statement stm = con.createStatement();
+            Statement statement = con.createStatement();
             System.out.println("Banco de Dados conectado");
-            System.out.println("Deletando Dados do banco");
-            stm.execute("DELETE FROM golfinho "
-                + " WHERE id = " + golfinho.getIdAnimal());
-            System.out.println("Dados deletado com sucesso");    
+            System.out.println("Excluindo dados no banco de dados");
+            statement.execute("DELETE FROM golfinho WHERE id = "+ id);
+            System.out.println("\n Golfinho deletado com sucesso! ");
+            
             con.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
