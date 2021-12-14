@@ -1,6 +1,5 @@
 // Importandos bibliotecas padrões.
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +16,7 @@ public class Funcionario {
     private String dataNascimento;
     private String matricula;
     /// Dados de acesso ao banco de dados.
-    private final static String url = "jdbc:mysql://localhost:3306/company";
+    private final static String url = "jdbc:mysql://localhost:3306/empresa";
     private final static String user = "root";
     private final static String password = "";
 
@@ -62,7 +61,7 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
-    public Strin getDataNascimento() {
+    public String getDataNascimento() {
         return this.dataNascimento;
     }
 
@@ -274,7 +273,7 @@ public class Funcionario {
             System.out.println("Informe a Data de Nascimento do funcionário (Deixar vazio para manter)");
             String dataNascimento = scanner.next();
             if (dataNascimento.length() > 0){
-                funcionario.setDataNascimento(Date.valueOf(dataNascimento));
+                funcionario.setDataNascimento(dataNascimento);
             }
             System.out.println("Informe o Matricula do funcionário (Deixar vazio para manter)");
             String matricula = scanner.next();

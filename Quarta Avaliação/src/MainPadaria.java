@@ -1,7 +1,8 @@
 // Importando as bibliotecas padrões e os modelos.
 import java.util.Scanner;
-import model.Chef;
-import model.Cliente;
+
+import dao.ChefDAO;
+import dao.ClienteDAO;
 import model.Mercados;
 import model.Padaria;
 import model.Receita;
@@ -57,8 +58,8 @@ public class MainPadaria {
             switch (menu) {
                 case 1:
                     try {
-                        Cliente.printCliente(
-                            Cliente.getclienteS()
+                        ClienteDAO.printCliente(
+                            ClienteDAO.getclienteS()
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -66,8 +67,8 @@ public class MainPadaria {
                     break;
                 case 2:
                     try {
-                        Cliente.insertClientePS(
-                            Cliente.getClienteInsert(scanner)
+                        ClienteDAO.insertClientePS(
+                            ClienteDAO.getClienteInsert(scanner)
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -75,8 +76,8 @@ public class MainPadaria {
                     break;
                 case 3:
                     try {
-                        Cliente.updateClienteS(
-                            Cliente.getClienteUpdate(scanner)
+                        ClienteDAO.updateClienteS(
+                            ClienteDAO.getClienteUpdate(scanner)
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -84,8 +85,8 @@ public class MainPadaria {
                     break;
                 case 4:
                     try {
-                        Cliente.deleteClientePS(
-                            Cliente.getCLiente(scanner)                     
+                        ClienteDAO.deleteClientePS(
+                            ClienteDAO.getCLiente(scanner)                     
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -93,8 +94,8 @@ public class MainPadaria {
                     break;
                 case 5:
                     try {
-                        Chef.printChef(
-                            Chef.getChefPS()
+                        ChefDAO.printChef(
+                            ChefDAO.getChefPS()
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -102,8 +103,8 @@ public class MainPadaria {
                     break;
                 case 6:
                     try {
-                        Chef.insertChefS(
-                            Chef.getChefInsertChef(scanner)
+                        ChefDAO.insertChefS(
+                            ChefDAO.getChefInsertChef(scanner)
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -111,8 +112,8 @@ public class MainPadaria {
                     break;
                 case 7:
                     try {
-                        Chef.updateChefPS(
-                            Chef.getChefUpdate(scanner)
+                        ChefDAO.updateChefPS(
+                            ChefDAO.getChefUpdate(scanner)
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -120,8 +121,8 @@ public class MainPadaria {
                     break;
                 case 8:
                     try {
-                        Chef.deleteChefS(
-                            Chef.getChef(scanner)
+                        ChefDAO.deleteChefS(
+                            ChefDAO.getChef(scanner)
                         );
                     } catch (Exception e) {
                         System.out.println(e.getMessage());

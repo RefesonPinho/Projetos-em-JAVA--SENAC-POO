@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ProgramaInicial {
 
     public static void main(String[] args) throws Exception {
-        final String url = "jdbc:mysql://localhost:3306/company";
+        final String url = "jdbc:mysql://localhost:3306/empresa";
         final String user = "root";
         final String password = "";
         Scanner scanner = new Scanner(System.in);
@@ -43,7 +43,7 @@ public class ProgramaInicial {
                                 sql.getInt("id"),
                                 sql.getString("nome"),
                                 sql.getString("cpf"),
-                                sql.getDate("data_nascimento"),
+                                sql.getString("dataNascimento"),
                                 sql.getString("matricula")
                             ));
                         }
@@ -62,7 +62,7 @@ public class ProgramaInicial {
                                 sql.getInt("id"),
                                 sql.getString("nome"),
                                 sql.getString("cpf"),
-                                sql.getDate("data_nascimento"),
+                                sql.getString("data_nascimento"),
                                 sql.getString("matricula")
                             ));
                         }
@@ -124,7 +124,7 @@ public class ProgramaInicial {
                                     rs.getInt("id"),
                                     rs.getString("nome"),
                                     rs.getString("cpf"),
-                                    rs.getDate("data_nascimento"),
+                                    rs.getString("data_nascimento"),
                                     rs.getString("matricula")
                                 )); 
                             }
@@ -148,7 +148,7 @@ public class ProgramaInicial {
                             rs.getInt("id"),
                             rs.getString("nome"),
                             rs.getString("cpf"),
-                            rs.getDate("data_nascimento"),
+                            rs.getString("data_nascimento"),
                             rs.getString("matricula")
                         );
                         con.close();
@@ -165,7 +165,7 @@ public class ProgramaInicial {
                         System.out.println("Informe a Data de Nascimento do funcionário (Deixar vazio para manter)");
                         String dataNascimento = scanner.next();
                         if (dataNascimento.length() > 0){
-                            funcionario.setDataNascimento(Date.valueOf(dataNascimento));
+                            funcionario.setDataNascimento(dataNascimento);
                         }
                         System.out.println("Informe o Matricula do funcionário (Deixar vazio para manter)");
                         String matricula = scanner.next();
@@ -204,7 +204,7 @@ public class ProgramaInicial {
                             rs.getInt("id"),
                             rs.getString("nome"),
                             rs.getString("cpf"),
-                            rs.getDate("data_nascimento"),
+                            rs.getString("data_nascimento"),
                             rs.getString("matricula")
                         );
                         con.close();
@@ -221,7 +221,7 @@ public class ProgramaInicial {
                         System.out.println("Informe a Data de Nascimento do funcionário (Deixar vazio para manter)");
                         String dataNascimento = scanner.next();
                         if (dataNascimento.length() > 0){
-                            funcionario.setDataNascimento(Date.valueOf(dataNascimento));
+                            funcionario.setDataNascimento(dataNascimento);
                         }
                         System.out.println("Informe o Matricula do funcionário (Deixar vazio para manter)");
                         String matricula = scanner.next();
@@ -239,7 +239,7 @@ public class ProgramaInicial {
                             + " WHERE id = ?");
                         pStm.setString(1, funcionario.getNome());
                         pStm.setString(2, funcionario.getCpf());
-                        pStm.setDate(3, funcionario.getDataNascimento());
+                        pStm.setString(3, funcionario.getDataNascimento());
                         pStm.setString(4, funcionario.getMatricula());
                         pStm.setInt(5, funcionario.getId());
                         if (pStm.executeUpdate() <= 0) {
@@ -265,7 +265,7 @@ public class ProgramaInicial {
                             rs.getInt("id"),
                             rs.getString("nome"),
                             rs.getString("cpf"),
-                            rs.getDate("data_nascimento"),
+                            rs.getString("data_nascimento"),
                             rs.getString("matricula")
                         );
                         stm = con.createStatement();
@@ -294,7 +294,7 @@ public class ProgramaInicial {
                             rs.getInt("id"),
                             rs.getString("nome"),
                             rs.getString("cpf"),
-                            rs.getDate("data_nascimento"),
+                            rs.getString("data_nascimento"),
                             rs.getString("matricula")
                         );
                         PreparedStatement pStm = con.prepareStatement("DELETE FROM funcionarios WHERE id = ?");

@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MainPadaria",
+            "request": "launch",
+            "mainClass": "MainPadaria",
+            "projectName": "outros_45806d81"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainPadaria",
+            "request": "launch",
+            "mainClass": "MainPadaria",
+            "projectName": "Quarta Avaliação_6149b28b"
+        },
+        {
+            "type": "java",
             "name": "Launch Cidade",
             "request": "launch",
             "mainClass": "Cidade",

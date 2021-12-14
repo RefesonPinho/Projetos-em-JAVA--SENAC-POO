@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 // Criando a classe Funcionario.
 public class Funcionario {

@@ -3,11 +3,9 @@ package src.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import src.model.Alimentacao;
 import src.model.Jaula;
 import src.model.Leao;
@@ -15,85 +13,12 @@ import src.model.Leao;
 
 // Criando a classe DAO.
 public class LeaoDAO {
-    private Connection connection;
+    private Connection con;
     private static ResultSet rsAliment;
-    // Criando as regras de negocio do CRUD e da conexão ao banco de dados.
-    public int insert(String sql, Object[] atribs) throws Exception {
-        try{
-            PreparedStatement statement = this.startConnection().prepareStatement(
-                sql, PreparedStatement.RETURN_GENERATED_KEYS);
-
-            // Atribui os valores
-            insertAtribs(statement, atribs);
-
-            // Verifica se o retorno é um valor criado
-            if(statement.executeUpdate() > 0){
-                ResultSet resultado = statement.getGeneratedKeys();
-
-                if(resultado.next()){
-                    return resultado.getInt(1);
-                }
-            }
-
-            return -1;
-        } catch(SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-
-    public ResultSet select(String sql) throws Exception {
-        try {
-            Statement statement = this.startConnection().createStatement();
-            ResultSet results = statement.executeQuery(sql);
-            return results;
-        }  catch(SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void insertAtribs(PreparedStatement statement, Object[] atribs) throws SQLException {
-        int idx = 1;
-        for(Object atrib: atribs){
-            if(atrib instanceof String) {
-                statement.setString(idx, (String) atrib);
-            } else if (atrib instanceof Integer){
-                statement.setInt(idx, (Integer) atrib);
-            } else if (atrib instanceof Double){
-                statement.setDouble(idx, (Double) atrib);
-            }
-            idx++;
-        }
-    }
-    public Connection startConnection() throws Exception {
-        if(this.connection != null && !connection.isClosed()){
-            return this.connection;
-        }
-
-        this.connection = getConnection();
-
-        return this.connection;
-    }
-
-    public void endConnection() throws SQLException, Exception {
-        startConnection().close();
-    }
-
-    private static Connection getConnection() throws Exception {
-        try {
-            final String url = "jdbc:mysql://localhost:3306/company";
-            final String user = "root";
-            final String password = "";
-
-            return DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-
-    //Criando os métodos do Crud do Leão no banco de dados
-
+    private final static String url = "jdbc:mysql://localhost:3306/zoologico?useTimezone=true&serverTimezone=UTC";
+    private final static String user = "root";
+    private final static String password = "";
+    // Criando as regras de negocio do CRUD e da conexão ao banco de dados do Leão.
     public static void SelectLeaoS(Leao leao) throws Exception {
         try {
             System.out.println("Conectando ao banco de dados");
